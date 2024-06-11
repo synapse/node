@@ -2569,11 +2569,7 @@ parameter is an instance of an [`Error`][] then it will be thrown instead of the
 ## `assert.matchObjectStrict(actual, expected[, message])`
 
 <!-- YAML
-added: v0.1.21
-changes:
-  - version: v10.0.0
-    pr-url: https://github.com/nodejs/node/pull/17003
-    description: Strict comparisson of two objects.
+added: REPLACEME
 -->
 
 * `actual` {any}
