@@ -2549,16 +2549,13 @@ added: REPLACEME
 * `expected` {any}
 * `message` {string|Error}
 
+Tests equivalence between the actual and expected parameters by performing
+a deep comparison, ensuring that all properties and their values are equal,
+allowing type coercion where necessary.
+
 **Strict assertion mode**
 
 An alias of \[`assert.matchObjectStrict()`]\[].
-
-**Legacy assertion mode**
-
-> Stability: 3 - Legacy: Use \[`assert.matchObjectStrict()`]\[] instead.
-
-Tests shallow, coercive inequality with the [`!=` operator][]. `NaN` is
-specially handled and treated as being identical if both sides are `NaN`.
 
 ```mjs
 import assert from 'node:assert';
@@ -2602,7 +2599,9 @@ added: REPLACEME
 * `expected` {any}
 * `message` {string|Error}
 
-Tests strict equality between the `actual` and `expected` parameters.
+Tests strict equivalence between the actual and expected parameters by performing a
+deep comparison, ensuring that all properties and their values are strictly equal,
+without type coercion.
 
 ```mjs
 import assert from 'node:assert/strict';

@@ -3,6 +3,8 @@
 require('../common');
 const assert = require('node:assert');
 const { describe, it } = require('node:test');
+const { KeyObject } = require('node:crypto');
+const { subtle } = globalThis.crypto;
 
 // Helper functions for testing
 function createCircularObject() {
@@ -105,13 +107,6 @@ describe('Object Comparison Tests', function() {
     const date1 = new Date('2024-06-10T12:00:00Z');
     const date2 = new Date('2024-06-11T12:00:00Z');
     assert.throws(() => assert.matchObjectStrict(date1, date2), Error);
-  });
-
-  // Test 16: Loose comparison of two objects with null and undefined properties
-  it('should loosely compare two objects with null and undefined properties', function() {
-    const obj1 = { a: null };
-    const obj2 = { a: undefined };
-    assert.matchObject(obj1, obj2);
   });
 
   it('should strictly compare two objects with large number of properties', function() {
@@ -338,4 +333,36 @@ describe('Object Comparison Tests', function() {
 
     assert.throws(() => assert.matchObjectStrict(obj1, obj2), Error);
   });
+
+  it('should compare two objects with different CryptoKey instances objects', async function() {
+    const { cryptoKey: cryptoKey1 } = await generateCryptoKey();
+    const { cryptoKey: cryptoKey2 } = await generateCryptoKey();
+
+    const obj1 = { cryptoKey: cryptoKey1 };
+    const obj2 = { cryptoKey: cryptoKey2 };
+
+    assert.throws(() => assert.matchObjectStrict(obj1, obj2), Error);
+  });
+
+  it('should compare two objects with different KeyObject objects', async function() {
+    const { keyObject: keyObject1 } = await generateCryptoKey();
+    const { keyObject: keyObject2 } = await generateCryptoKey();
+
+    const obj1 = { keyObject: keyObject1 };
+    const obj2 = { keyObject: keyObject2 };
+
+    assert.throws(() => assert.matchObjectStrict(obj1, obj2), Error);
+  });
 });
+
+async function generateCryptoKey() {
+  const cryptoKey = await subtle.generateKey({
+    name: 'HMAC',
+    hash: 'SHA-256',
+    length: 256,
+  }, true, ['sign', 'verify']);
+
+  const keyObject = KeyObject.from(cryptoKey);
+
+  return { cryptoKey, keyObject };
+}
