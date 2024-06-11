@@ -106,10 +106,10 @@ more on color support in terminal environments, read the tty
 
 Legacy assertion mode uses the [`==` operator][] in:
 
-- [`assert.deepEqual()`][]
-- [`assert.equal()`][]
-- [`assert.notDeepEqual()`][]
-- [`assert.notEqual()`][]
+* [`assert.deepEqual()`][]
+* [`assert.equal()`][]
+* [`assert.notDeepEqual()`][]
+* [`assert.notEqual()`][]
 
 To use legacy assertion mode:
 
@@ -131,7 +131,7 @@ assert.deepEqual(/a/gi, new Date());
 
 ## Class: assert.AssertionError
 
-- Extends: {errors.Error}
+* Extends: {errors.Error}
 
 Indicates the failure of an assertion. All errors thrown by the `node:assert`
 module will be instances of the `AssertionError` class.
@@ -142,12 +142,12 @@ module will be instances of the `AssertionError` class.
 added: v0.1.21
 -->
 
-- `options` {Object}
-  - `message` {string} If provided, the error message is set to this value.
-  - `actual` {any} The `actual` property on the error instance.
-  - `expected` {any} The `expected` property on the error instance.
-  - `operator` {string} The `operator` property on the error instance.
-  - `stackStartFn` {Function} If provided, the generated stack trace omits
+* `options` {Object}
+  * `message` {string} If provided, the error message is set to this value.
+  * `actual` {any} The `actual` property on the error instance.
+  * `expected` {any} The `expected` property on the error instance.
+  * `operator` {string} The `operator` property on the error instance.
+  * `stackStartFn` {Function} If provided, the generated stack trace omits
     frames before this function.
 
 A subclass of `Error` that indicates the failure of an assertion.
@@ -155,15 +155,15 @@ A subclass of `Error` that indicates the failure of an assertion.
 All instances contain the built-in `Error` properties (`message` and `name`)
 and:
 
-- `actual` {any} Set to the `actual` argument for methods such as
+* `actual` {any} Set to the `actual` argument for methods such as
   [`assert.strictEqual()`][].
-- `expected` {any} Set to the `expected` value for methods such as
+* `expected` {any} Set to the `expected` value for methods such as
   [`assert.strictEqual()`][].
-- `generatedMessage` {boolean} Indicates if the message was auto-generated
+* `generatedMessage` {boolean} Indicates if the message was auto-generated
   (`true`) or not.
-- `code` {string} Value is always `ERR_ASSERTION` to show that the error is an
+* `code` {string} Value is always `ERR_ASSERTION` to show that the error is an
   assertion error.
-- `operator` {string} Set to the passed in operator value.
+* `operator` {string} Set to the passed in operator value.
 
 ```mjs
 import assert from 'node:assert';
@@ -294,9 +294,9 @@ added:
   - v12.19.0
 -->
 
-- `fn` {Function} **Default:** A no-op function.
-- `exact` {number} **Default:** `1`.
-- Returns: {Function} A function that wraps `fn`.
+* `fn` {Function} **Default:** A no-op function.
+* `exact` {number} **Default:** `1`.
+* Returns: {Function} A function that wraps `fn`.
 
 The wrapper function is expected to be called exactly `exact` times. If the
 function has not been called exactly `exact` times when
@@ -337,13 +337,13 @@ added:
   - v16.18.0
 -->
 
-- `fn` {Function}
+* `fn` {Function}
 
-- Returns: {Array} An array with all the calls to a tracked function.
+* Returns: {Array} An array with all the calls to a tracked function.
 
-- Object {Object}
-  - `thisArg` {Object}
-  - `arguments` {Array} the arguments passed to the tracked function
+* Object {Object}
+  * `thisArg` {Object}
+  * `arguments` {Array} the arguments passed to the tracked function
 
 ```mjs
 import assert from 'node:assert';
@@ -382,15 +382,15 @@ added:
   - v12.19.0
 -->
 
-- Returns: {Array} An array of objects containing information about the wrapper
+* Returns: {Array} An array of objects containing information about the wrapper
   functions returned by [`tracker.calls()`][].
-- Object {Object}
-  - `message` {string}
-  - `actual` {number} The actual number of times the function was called.
-  - `expected` {number} The number of times the function was expected to be
+* Object {Object}
+  * `message` {string}
+  * `actual` {number} The actual number of times the function was called.
+  * `expected` {number} The number of times the function was expected to be
     called.
-  - `operator` {string} The name of the function that is wrapped.
-  - `stack` {Object} A stack trace of the function.
+  * `operator` {string} The name of the function that is wrapped.
+  * `stack` {Object} A stack trace of the function.
 
 The arrays contains information about the expected and actual number of calls of
 the functions that have not been called the expected number of times.
@@ -455,7 +455,7 @@ added:
   - v16.18.0
 -->
 
-- `fn` {Function} a tracked function to reset.
+* `fn` {Function} a tracked function to reset.
 
 Reset calls of the call tracker.
 If a tracked function is passed as an argument, the calls will be reset for it.
@@ -547,8 +547,8 @@ tracker.verify();
 added: v0.5.9
 -->
 
-- `value` {any} The input that is checked for being truthy.
-- `message` {string|Error}
+* `value` {any} The input that is checked for being truthy.
+* `message` {string|Error}
 
 An alias of [`assert.ok()`][].
 
@@ -600,9 +600,9 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 **Strict assertion mode**
 
@@ -621,23 +621,23 @@ are also recursively evaluated by the following rules.
 
 ### Comparison details
 
-- Primitive values are compared with the [`==` operator][],
+* Primitive values are compared with the [`==` operator][],
   with the exception of `NaN`. It is treated as being identical in case
   both sides are `NaN`.
-- [Type tags][Object.prototype.toString()] of objects should be the same.
-- Only [enumerable "own" properties][] are considered.
-- [`Error`][] names, messages, causes, and errors are always compared,
+* [Type tags][Object.prototype.toString()] of objects should be the same.
+* Only [enumerable "own" properties][] are considered.
+* [`Error`][] names, messages, causes, and errors are always compared,
   even if these are not enumerable properties.
-- [Object wrappers][] are compared both as objects and unwrapped values.
-- `Object` properties are compared unordered.
-- [`Map`][] keys and [`Set`][] items are compared unordered.
-- Recursion stops when both sides differ or both sides encounter a circular
+* [Object wrappers][] are compared both as objects and unwrapped values.
+* `Object` properties are compared unordered.
+* [`Map`][] keys and [`Set`][] items are compared unordered.
+* Recursion stops when both sides differ or both sides encounter a circular
   reference.
-- Implementation does not test the [`[[Prototype]]`][prototype-spec] of
+* Implementation does not test the [`[[Prototype]]`][prototype-spec] of
   objects.
-- [`Symbol`][] properties are not compared.
-- [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values.
-- [`RegExp`][] lastIndex, flags, and source are always compared, even if these
+* [`Symbol`][] properties are not compared.
+* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values.
+* [`RegExp`][] lastIndex, flags, and source are always compared, even if these
   are not enumerable properties.
 
 The following example does not throw an [`AssertionError`][] because the
@@ -776,9 +776,9 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 Tests for deep equality between the `actual` and `expected` parameters.
 "Deep" equality means that the enumerable "own" properties of child objects
@@ -786,23 +786,23 @@ are recursively evaluated also by the following rules.
 
 ### Comparison details
 
-- Primitive values are compared using [`Object.is()`][].
-- [Type tags][Object.prototype.toString()] of objects should be the same.
-- [`[[Prototype]]`][prototype-spec] of objects are compared using
+* Primitive values are compared using [`Object.is()`][].
+* [Type tags][Object.prototype.toString()] of objects should be the same.
+* [`[[Prototype]]`][prototype-spec] of objects are compared using
   the [`===` operator][].
-- Only [enumerable "own" properties][] are considered.
-- [`Error`][] names, messages, causes, and errors are always compared,
+* Only [enumerable "own" properties][] are considered.
+* [`Error`][] names, messages, causes, and errors are always compared,
   even if these are not enumerable properties.
   `errors` is also compared.
-- Enumerable own [`Symbol`][] properties are compared as well.
-- [Object wrappers][] are compared both as objects and unwrapped values.
-- `Object` properties are compared unordered.
-- [`Map`][] keys and [`Set`][] items are compared unordered.
-- Recursion stops when both sides differ or both sides encounter a circular
+* Enumerable own [`Symbol`][] properties are compared as well.
+* [Object wrappers][] are compared both as objects and unwrapped values.
+* `Object` properties are compared unordered.
+* [`Map`][] keys and [`Set`][] items are compared unordered.
+* Recursion stops when both sides differ or both sides encounter a circular
   reference.
-- [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See
+* [`WeakMap`][] and [`WeakSet`][] comparison does not rely on their values. See
   below for further details.
-- [`RegExp`][] lastIndex, flags, and source are always compared, even if these
+* [`RegExp`][] lastIndex, flags, and source are always compared, even if these
   are not enumerable properties.
 
 ```mjs
@@ -1007,9 +1007,9 @@ changes:
     description: This API is no longer experimental.
 -->
 
-- `string` {string}
-- `regexp` {RegExp}
-- `message` {string|Error}
+* `string` {string}
+* `regexp` {RegExp}
+* `message` {string|Error}
 
 Expects the `string` input not to match the regular expression.
 
@@ -1052,9 +1052,9 @@ instance of an [`Error`][] then it will be thrown instead of the
 added: v10.0.0
 -->
 
-- `asyncFn` {Function|Promise}
-- `error` {RegExp|Function}
-- `message` {string}
+* `asyncFn` {Function|Promise}
+* `error` {RegExp|Function}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately
 calls the function and awaits the returned promise to complete. It will then
@@ -1126,9 +1126,9 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->
 
-- `fn` {Function}
-- `error` {RegExp|Function}
-- `message` {string}
+* `fn` {Function}
+* `error` {RegExp|Function}
+* `message` {string}
 
 Asserts that the function `fn` does not throw an error.
 
@@ -1233,9 +1233,9 @@ changes:
                  NaN.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 **Strict assertion mode**
 
@@ -1293,7 +1293,7 @@ parameter is an instance of an [`Error`][] then it will be thrown instead of the
 added: v0.1.21
 -->
 
-- `message` {string|Error} **Default:** `'Failed'`
+* `message` {string|Error} **Default:** `'Failed'`
 
 Throws an [`AssertionError`][] with the provided error message or a default
 error message. If the `message` parameter is an instance of an [`Error`][] then
@@ -1342,11 +1342,11 @@ changes:
 > Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert
 > functions instead.
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
-- `operator` {string} **Default:** `'!='`
-- `stackStartFn` {Function} **Default:** `assert.fail`
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
+* `operator` {string} **Default:** `'!='`
+* `stackStartFn` {Function} **Default:** `assert.fail`
 
 If `message` is falsy, the error message is set as the values of `actual` and
 `expected` separated by the provided `operator`. If just the two `actual` and
@@ -1441,7 +1441,7 @@ changes:
                  values were handled the same as `null` and did not throw.
 -->
 
-- `value` {any}
+* `value` {any}
 
 Throws `value` if `value` is not `undefined` or `null`. This is useful when
 testing the `error` argument in callbacks. The stack trace contains all frames
@@ -1512,9 +1512,9 @@ changes:
     description: This API is no longer experimental.
 -->
 
-- `string` {string}
-- `regexp` {RegExp}
-- `message` {string|Error}
+* `string` {string}
+* `regexp` {RegExp}
+* `message` {string|Error}
 
 Expects the `string` input to match the regular expression.
 
@@ -1589,9 +1589,9 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 **Strict assertion mode**
 
@@ -1709,9 +1709,9 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
 
@@ -1752,9 +1752,9 @@ changes:
                  NaN.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 **Strict assertion mode**
 
@@ -1809,9 +1809,9 @@ changes:
     description: Used comparison changed from Strict Equality to `Object.is()`.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 Tests strict inequality between the `actual` and `expected` parameters as
 determined by [`Object.is()`][].
@@ -1863,8 +1863,8 @@ changes:
                  error message.
 -->
 
-- `value` {any}
-- `message` {string|Error}
+* `value` {any}
+* `message` {string|Error}
 
 Tests if `value` is truthy. It is equivalent to
 `assert.equal(!!value, true, message)`.
@@ -1875,7 +1875,7 @@ parameter is `undefined`, a default error message is assigned. If the `message`
 parameter is an instance of an [`Error`][] then it will be thrown instead of the
 `AssertionError`.
 If no arguments are passed in at all `message` will be set to the string:
-`` 'No value argument passed to `assert.ok()`' ``.
+``'No value argument passed to `assert.ok()`'``.
 
 Be aware that in the `repl` the error message will be different to the one
 thrown in a file! See below for further details.
@@ -1976,9 +1976,9 @@ assert(0);
 added: v10.0.0
 -->
 
-- `asyncFn` {Function|Promise}
-- `error` {RegExp|Function|Object|Error}
-- `message` {string}
+* `asyncFn` {Function|Promise}
+* `error` {RegExp|Function|Object|Error}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately
 calls the function and awaits the returned promise to complete. It will then
@@ -2095,9 +2095,9 @@ changes:
     description: Used comparison changed from Strict Equality to `Object.is()`.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 Tests strict equality between the `actual` and `expected` parameters as
 determined by [`Object.is()`][].
@@ -2181,9 +2181,9 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->
 
-- `fn` {Function}
-- `error` {RegExp|Function|Object|Error}
-- `message` {string}
+* `fn` {Function}
+* `error` {RegExp|Function|Object|Error}
+* `message` {string}
 
 Expects the function `fn` to throw an error.
 
@@ -2519,17 +2519,17 @@ changes:
                  NaN.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 **Strict assertion mode**
 
-An alias of [`assert.matchObjectStrict()`][].
+An alias of \[`assert.matchObjectStrict()`]\[].
 
 **Legacy assertion mode**
 
-> Stability: 3 - Legacy: Use [`assert.matchObjectStrict()`][] instead.
+> Stability: 3 - Legacy: Use \[`assert.matchObjectStrict()`]\[] instead.
 
 Tests shallow, coercive inequality with the [`!=` operator][]. `NaN` is
 specially handled and treated as being identical if both sides are `NaN`.
@@ -2576,9 +2576,9 @@ changes:
     description: Strict comparisson of two objects.
 -->
 
-- `actual` {any}
-- `expected` {any}
-- `message` {string|Error}
+* `actual` {any}
+* `expected` {any}
+* `message` {string|Error}
 
 Tests strict equality between the `actual` and `expected` parameters.
 
