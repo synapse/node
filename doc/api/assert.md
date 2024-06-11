@@ -2506,17 +2506,7 @@ assert.throws(throwingFirst, /Second$/);
 ## `assert.matchObject(actual, expected[, message])`
 
 <!-- YAML
-added: v0.1.21
-changes:
-  - version:
-      - v16.0.0
-      - v14.18.0
-    pr-url: https://github.com/nodejs/node/pull/38113
-    description: Equivalence assertion test between two objects.
-  - version: v14.0.0
-    pr-url: https://github.com/nodejs/node/pull/30766
-    description: NaN is now treated as being identical if both sides are
-                 NaN.
+added: REPLACEME
 -->
 
 * `actual` {any}
