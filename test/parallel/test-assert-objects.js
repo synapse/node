@@ -3,6 +3,7 @@
 require('../common');
 const assert = require('node:assert');
 const { describe, it } = require('node:test');
+const crypto = require('crypto');
 
 // Helper functions for testing
 function createCircularObject() {
@@ -338,4 +339,38 @@ describe('Object Comparison Tests', function() {
 
     assert.throws(() => assert.matchObjectStrict(obj1, obj2), Error);
   });
+
+  it('should compare two objects with different CryptoKey string objects', function() {
+    const cryptoKey1 = generateCryptoKey();
+    const cryptoKey2 = generateCryptoKey();
+
+    const obj1 = { cryptoKey: cryptoKey1 };
+    const obj2 = { cryptoKey: cryptoKey2 };
+
+    assert.throws(() => assert.matchObjectStrict(obj1, obj2), Error);
+  });
+
+  it('should compare two objects with different KeyObject objects', function() {
+    const keyObject1 = generateKeyObject();
+    const keyObject2 = generateKeyObject();
+
+    const obj1 = { keyObject: keyObject1 };
+    const obj2 = { keyObject: keyObject2 };
+
+    assert.throws(() => assert.matchObjectStrict(obj1, obj2), Error);
+  });
 });
+
+function generateCryptoKey(length = 256) {
+  return crypto.randomBytes(length / 8).toString('hex');
+}
+
+function generateKeyObject () {
+  const { privateKey } = crypto.generateKeyPairSync('rsa', {
+    modulusLength: 2048,
+  })
+  return privateKey.export({
+    format: 'pem',
+    type: 'pkcs1',
+  });
+}
