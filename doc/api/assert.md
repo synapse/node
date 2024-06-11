@@ -354,9 +354,8 @@ function func() {}
 const callsfunc = tracker.calls(func);
 callsfunc(1, 2, 3);
 
-assert.deepStrictEqual(tracker.getCalls(callsfunc), [
-  { thisArg: undefined, arguments: [1, 2, 3] },
-]);
+assert.deepStrictEqual(tracker.getCalls(callsfunc),
+                       [{ thisArg: undefined, arguments: [1, 2, 3] }]);
 ```
 
 ```cjs
@@ -369,9 +368,8 @@ function func() {}
 const callsfunc = tracker.calls(func);
 callsfunc(1, 2, 3);
 
-assert.deepStrictEqual(tracker.getCalls(callsfunc), [
-  { thisArg: undefined, arguments: [1, 2, 3] },
-]);
+assert.deepStrictEqual(tracker.getCalls(callsfunc),
+                       [{ thisArg: undefined, arguments: [1, 2, 3] }]);
 ```
 
 ### `tracker.report()`
@@ -1080,35 +1078,43 @@ Besides the async nature to await the completion behaves identically to
 ```mjs
 import assert from 'node:assert/strict';
 
-await assert.doesNotReject(async () => {
-  throw new TypeError('Wrong value');
-}, SyntaxError);
+await assert.doesNotReject(
+  async () => {
+    throw new TypeError('Wrong value');
+  },
+  SyntaxError,
+);
 ```
 
 ```cjs
 const assert = require('node:assert/strict');
 
 (async () => {
-  await assert.doesNotReject(async () => {
-    throw new TypeError('Wrong value');
-  }, SyntaxError);
+  await assert.doesNotReject(
+    async () => {
+      throw new TypeError('Wrong value');
+    },
+    SyntaxError,
+  );
 })();
 ```
 
 ```mjs
 import assert from 'node:assert/strict';
 
-assert.doesNotReject(Promise.reject(new TypeError('Wrong value'))).then(() => {
-  // ...
-});
+assert.doesNotReject(Promise.reject(new TypeError('Wrong value')))
+  .then(() => {
+    // ...
+  });
 ```
 
 ```cjs
 const assert = require('node:assert/strict');
 
-assert.doesNotReject(Promise.reject(new TypeError('Wrong value'))).then(() => {
-  // ...
-});
+assert.doesNotReject(Promise.reject(new TypeError('Wrong value')))
+  .then(() => {
+    // ...
+  });
 ```
 
 ## `assert.doesNotThrow(fn[, error][, message])`
@@ -1154,17 +1160,23 @@ matching error type in the assertion:
 ```mjs
 import assert from 'node:assert/strict';
 
-assert.doesNotThrow(() => {
-  throw new TypeError('Wrong value');
-}, SyntaxError);
+assert.doesNotThrow(
+  () => {
+    throw new TypeError('Wrong value');
+  },
+  SyntaxError,
+);
 ```
 
 ```cjs
 const assert = require('node:assert/strict');
 
-assert.doesNotThrow(() => {
-  throw new TypeError('Wrong value');
-}, SyntaxError);
+assert.doesNotThrow(
+  () => {
+    throw new TypeError('Wrong value');
+  },
+  SyntaxError,
+);
 ```
 
 However, the following will result in an [`AssertionError`][] with the message
@@ -1173,17 +1185,23 @@ However, the following will result in an [`AssertionError`][] with the message
 ```mjs
 import assert from 'node:assert/strict';
 
-assert.doesNotThrow(() => {
-  throw new TypeError('Wrong value');
-}, TypeError);
+assert.doesNotThrow(
+  () => {
+    throw new TypeError('Wrong value');
+  },
+  TypeError,
+);
 ```
 
 ```cjs
 const assert = require('node:assert/strict');
 
-assert.doesNotThrow(() => {
-  throw new TypeError('Wrong value');
-}, TypeError);
+assert.doesNotThrow(
+  () => {
+    throw new TypeError('Wrong value');
+  },
+  TypeError,
+);
 ```
 
 If an [`AssertionError`][] is thrown and a value is provided for the `message`
@@ -1891,7 +1909,7 @@ assert.ok(1);
 assert.ok();
 // AssertionError: No value argument passed to `assert.ok()`
 
-assert.ok(false, "it's false");
+assert.ok(false, 'it\'s false');
 // AssertionError: it's false
 
 // In the repl:
@@ -1926,7 +1944,7 @@ assert.ok(1);
 assert.ok();
 // AssertionError: No value argument passed to `assert.ok()`
 
-assert.ok(false, "it's false");
+assert.ok(false, 'it\'s false');
 // AssertionError: it's false
 
 // In the repl:
@@ -2066,7 +2084,10 @@ const assert = require('node:assert/strict');
 ```mjs
 import assert from 'node:assert/strict';
 
-assert.rejects(Promise.reject(new Error('Wrong value')), Error).then(() => {
+assert.rejects(
+  Promise.reject(new Error('Wrong value')),
+  Error,
+).then(() => {
   // ...
 });
 ```
@@ -2074,7 +2095,10 @@ assert.rejects(Promise.reject(new Error('Wrong value')), Error).then(() => {
 ```cjs
 const assert = require('node:assert/strict');
 
-assert.rejects(Promise.reject(new Error('Wrong value')), Error).then(() => {
+assert.rejects(
+  Promise.reject(new Error('Wrong value')),
+  Error,
+).then(() => {
   // ...
 });
 ```
@@ -2343,17 +2367,23 @@ Validate instanceof using constructor:
 ```mjs
 import assert from 'node:assert/strict';
 
-assert.throws(() => {
-  throw new Error('Wrong value');
-}, Error);
+assert.throws(
+  () => {
+    throw new Error('Wrong value');
+  },
+  Error,
+);
 ```
 
 ```cjs
 const assert = require('node:assert/strict');
 
-assert.throws(() => {
-  throw new Error('Wrong value');
-}, Error);
+assert.throws(
+  () => {
+    throw new Error('Wrong value');
+  },
+  Error,
+);
 ```
 
 Validate error message using [`RegExp`][]:
@@ -2364,17 +2394,23 @@ therefore also include the error name.
 ```mjs
 import assert from 'node:assert/strict';
 
-assert.throws(() => {
-  throw new Error('Wrong value');
-}, /^Error: Wrong value$/);
+assert.throws(
+  () => {
+    throw new Error('Wrong value');
+  },
+  /^Error: Wrong value$/,
+);
 ```
 
 ```cjs
 const assert = require('node:assert/strict');
 
-assert.throws(() => {
-  throw new Error('Wrong value');
-}, /^Error: Wrong value$/);
+assert.throws(
+  () => {
+    throw new Error('Wrong value');
+  },
+  /^Error: Wrong value$/,
+);
 ```
 
 Custom error validation:
