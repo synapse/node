@@ -321,10 +321,8 @@ describe('Object Comparison Tests', function() {
   });
 
   it('should strictly compare two objects with no prototype', function() {
-    const obj1 = { __proto__: null };
-    obj1.prop = 'value';
-    const obj2 = { __proto__: null };
-    obj2.prop = 'value';
+    const obj1 = { __proto__: null, prop: 'value' };
+    const obj2 = { __proto__: null, prop: 'value' };
     assert.matchObjectStrict(obj1, obj2);
   });
 
