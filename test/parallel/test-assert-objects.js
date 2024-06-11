@@ -19,6 +19,8 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+/* eslint-disable node-core/required-modules, node-core/require-common-first */
+
 'use strict';
 
 const assert = require('assert');

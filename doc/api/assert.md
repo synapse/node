@@ -1198,7 +1198,7 @@ assert.doesNotThrow(
     throw new TypeError('Wrong value');
   },
   /Wrong value/,
-  'Whoops'
+  'Whoops',
 );
 // Throws: AssertionError: Got unwanted exception: Whoops
 ```
@@ -1211,7 +1211,7 @@ assert.doesNotThrow(
     throw new TypeError('Wrong value');
   },
   /Wrong value/,
-  'Whoops'
+  'Whoops',
 );
 // Throws: AssertionError: Got unwanted exception: Whoops
 ```
@@ -2011,7 +2011,7 @@ await assert.rejects(
   {
     name: 'TypeError',
     message: 'Wrong value',
-  }
+  },
 );
 ```
 
@@ -2026,7 +2026,7 @@ const assert = require('node:assert/strict');
     {
       name: 'TypeError',
       message: 'Wrong value',
-    }
+    },
   );
 })();
 ```
@@ -2042,7 +2042,7 @@ await assert.rejects(
     assert.strictEqual(err.name, 'TypeError');
     assert.strictEqual(err.message, 'Wrong value');
     return true;
-  }
+  },
 );
 ```
 
@@ -2058,7 +2058,7 @@ const assert = require('node:assert/strict');
       assert.strictEqual(err.name, 'TypeError');
       assert.strictEqual(err.message, 'Wrong value');
       return true;
-    }
+    },
   );
 })();
 ```
@@ -2226,7 +2226,7 @@ assert.throws(
     // Only properties on the validation object will be tested for.
     // Using nested objects requires all properties to be present. Otherwise
     // the validation is going to fail.
-  }
+  },
 );
 
 // Using regular expressions to validate error properties:
@@ -2250,7 +2250,7 @@ assert.throws(
     // validation object contains an identical regular expression, it is going
     // to pass.
     reg: /abc/i,
-  }
+  },
 );
 
 // Fails due to the different `message` and `name` properties:
@@ -2265,7 +2265,7 @@ assert.throws(
   },
   // The error's `message` and `name` properties will also be checked when using
   // an error as validation object.
-  err
+  err,
 );
 ```
 
@@ -2295,7 +2295,7 @@ assert.throws(
     // Only properties on the validation object will be tested for.
     // Using nested objects requires all properties to be present. Otherwise
     // the validation is going to fail.
-  }
+  },
 );
 
 // Using regular expressions to validate error properties:
@@ -2319,7 +2319,7 @@ assert.throws(
     // validation object contains an identical regular expression, it is going
     // to pass.
     reg: /abc/i,
-  }
+  },
 );
 
 // Fails due to the different `message` and `name` properties:
@@ -2334,7 +2334,7 @@ assert.throws(
   },
   // The error's `message` and `name` properties will also be checked when using
   // an error as validation object.
-  err
+  err,
 );
 ```
 
@@ -2399,7 +2399,7 @@ assert.throws(
     // possible.
     return true;
   },
-  'unexpected error'
+  'unexpected error',
 );
 ```
 
@@ -2420,7 +2420,7 @@ assert.throws(
     // possible.
     return true;
   },
-  'unexpected error'
+  'unexpected error',
 );
 ```
 
