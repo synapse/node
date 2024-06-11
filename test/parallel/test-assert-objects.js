@@ -339,4 +339,25 @@ describe('Object Comparison Tests', function() {
     });
     assert.matchObjectStrict(obj1, obj2);
   });
+
+  it('should compare two identical primitives (strings)', function() {
+    const obj1 = 'foo';
+    const obj2 = 'foo';
+    assert.matchObjectStrict(obj1, obj2);
+    assert.matchObject(obj1, obj2);
+  });
+
+  it('should compare two identical primitives (booleans)', function() {
+    const obj1 = true;
+    const obj2 = true;
+    assert.matchObjectStrict(obj1, obj2);
+    assert.matchObject(obj1, obj2);
+  });
+
+  it('should compare two non-identical primitives (number)', function() {
+    const obj1 = 1;
+    const obj2 = 2;
+
+    assert.throws(() => assert.matchObjectStrict(obj1, obj2), Error);
+  });
 });
