@@ -2586,7 +2586,7 @@ assert.matchObject({ c: 1 }, { c: '1' });
 // OK
 ```
 
-If the values or keys are equal, an [`AssertionError`][] is thrown with a `message`
+If the values or keys are not equal, an [`AssertionError`][] is thrown with a `message`
 property set equal to the value of the `message` parameter. If the `message`
 parameter is undefined, a default error message is assigned. If the `message`
 parameter is an instance of an [`Error`][] then it will be thrown instead of the
