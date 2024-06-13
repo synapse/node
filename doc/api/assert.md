@@ -2549,7 +2549,9 @@ added: REPLACEME
 * `expected` {any}
 * `message` {string|Error}
 
-Tests equivalence between the actual and expected parameters by performing a deep comparison, ensuring that all properties and their values are equal, allowing type coercion where necessary.
+Tests equivalence between the actual and expected parameters by performing
+a deep comparison, ensuring that all properties and their values are equal,
+allowing type coercion where necessary.
 
 **Strict assertion mode**
 
@@ -2597,7 +2599,9 @@ added: REPLACEME
 * `expected` {any}
 * `message` {string|Error}
 
-Tests strict equivalence between the actual and expected parameters by performing a deep comparison, ensuring that all properties and their values are strictly equal, without type coercion.
+Tests strict equivalence between the actual and expected parameters by performing a
+deep comparison, ensuring that all properties and their values are strictly equal,
+without type coercion.
 
 ```mjs
 import assert from 'node:assert/strict';
